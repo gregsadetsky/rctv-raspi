@@ -4,9 +4,5 @@ hardware counterpart to RCTV software -- [repo here](https://github.com/gregsade
 
 ## TODOs
 
-- does raspi even work
-  - keyboard? ssh?
-- video out on screen?
-- can screen be rotated 90 degrees? (on demand/setting?)
-- chrome
+- TBD does screen retain 90 degrees rotation (I assume)
 - run chrome fullscreen at startup
