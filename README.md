@@ -1,7 +1,6 @@
 # rctv-raspi
 
-Hardware counterpart to RCTV software -- [repo here](https://github.com/gregsadetsky/recurselevision/).
-
+Hardware counterpart to RCTV software -- [repo here](https://github.com/gregsadetsky/rctv/).
 
 ## Setup Documentation
 
@@ -136,4 +135,3 @@ WantedBy=graphical.target
 **Debugging**
 
 * See above :)
-
