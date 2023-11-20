@@ -1,3 +1,4 @@
+import code
 import time
 import os
 from selenium import webdriver
@@ -14,6 +15,8 @@ RC_PASSWORD = os.getenv("RC_PASSWORD")
 RCTV_AUTH_USERNAME = os.getenv("RCTV_AUTH_USERNAME")
 RCTV_AUTH_PASSWORD = os.getenv("RCTV_AUTH_PASSWORD")
 
+TV_LOGIN_TOKEN = os.getenv('TV_LOGIN_TOKEN')
+
 # - start chrome in kiosk mode
 options = webdriver.ChromeOptions()
 
@@ -21,7 +24,13 @@ options = webdriver.ChromeOptions()
 options.add_argument("--kiosk")
 # rctogether shows 'do you want to receive notifications' dialog...! get rid.
 options.add_argument("--disable-notifications")
+# should disable all popups - like save password!!
+options.add_argument("--disable-infobars")
+prefs = {"credentials_enable_service": False,
+     "profile.password_manager_enabled": False}
+options.add_experimental_option("prefs", prefs)
 # remove "chrome is controlled by automated software" message
+# https://stackoverflow.com/a/71257995
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 
 service = webdriver.ChromeService(executable_path="/usr/bin/chromedriver")
@@ -52,9 +61,8 @@ driver.add_cookie(cookie)
 # wait 5 seconds again
 driver.implicitly_wait(5)
 # - go to user:pass@rctv.recurse.com/app/0 (with u/p from .env file as well)
-driver.get(f"https://{RCTV_AUTH_USERNAME}:{RCTV_AUTH_PASSWORD}@rctv.recurse.com/app/1")
+driver.get(f"https://rctv.recurse.com/app/1?tv_login_token={TV_LOGIN_TOKEN}")
 
-while True:
-    # - TODO check connection to selenium (fetch driver.title ?), restart if broken? restart script? kill script and let service restart it?
-    time.sleep(60)
-    pass
+code.interact(local=locals(), banner="""RCTV REPL!!
+use `driver` as the Selenium driver variable to do stuff""")
+
