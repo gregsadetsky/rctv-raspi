@@ -13,8 +13,11 @@ for future hackers:
 - the privoxy also runs as a service and can be restarted with `sudo systemctl restart privoxy` (start/stop/status also work)
 - the once-a-day restarting was done using a cron, so `sudo crontab -e` to edit that
 - privoxy files are under /etc/privoxy, be root to do stuff but also `chown privoxy:root` files/dirs to make sure that the privoxy user can read/write them
-- privoxy doesn't log anything by default, you can enable logging in /etc/privoxy/config by enabling all of the `debug <NUMBER>` lines
-- when privoxy logging is enabled, logs can be found in /var/log/privoxy/logfile
+- privoxy doesn't log anything by default, you can enable logging in `/etc/privoxy/config` by enabling all of the `debug <NUMBER>` lines
+- when privoxy logging is enabled, logs can be found in `/var/log/privoxy/logfile`
 - I'm not sure if the privoxy service needs to be restarted between changes to config and/or user.filter or user.action, but it's always safer to do so using `sudo systemctl restart privoxy`
-- the rctogether privoxy header hacks specifically live in /etc/privoxy/user.action and .../user.filter
+- the rctogether privoxy header hacks specifically live in `/etc/privoxy/user.action` and .../user.filter -- those files have been commited to this repo -- https://github.com/gregsadetsky/rctv-raspi/tree/main/privoxy
 - there are also hacks for example.com that are just there to check that privoxy https proxying does work
+- to help debug privoxy, it's easier to stop the service and start/run privoxy directly in the terminal -> `/usr/sbin/privoxy --no-daemon --pidfile /run/privoxy.pid --user privoxy /etc/privoxy/config`
+- privoxy also has a kind-of-web-ui but I didn't end up using it. but it's nice to see it to confirm that the proxy is working. go to `http://p.p` to see that web ui. you do have to run `chromium-browser --proxy-server="127.0.0.1:8118"` i.e. use the proxy, of course
+- all privoxy default.action and .filter and match-all.action have been disabled i.e. only user.action and .filter have been kept as enabled
