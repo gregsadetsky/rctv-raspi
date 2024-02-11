@@ -4,7 +4,7 @@ the extremely TLDR version is that 1. we now load rctvtogether (as an rctv app) 
 
 yes, the raspi now runs a privoxy proxy, and chromium has been configured to accept a self signed ssl authority to let the fake/self-signed ssl certificate for recurse.rctogether.com to be seen as valid
 
-Greg also added a line into the crontab so that the raspi would restart once a day, hopefully helping with instability / weird non-states where chromium couldn't even be started (probably because the ram was full? or something was off?). a reboot most always fixes everything...
+Greg also added a line into the crontab so that the raspi would restart once a day, hopefully helping with instability / weird non-states where chromium couldn't even be started after the raspi had been running for some time (probably because the ram was full? or something was off?). a reboot most always fixes everything...
 
 ---
 
