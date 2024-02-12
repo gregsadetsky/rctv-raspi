@@ -21,3 +21,4 @@ for future hackers:
 - to help debug privoxy, it's easier to stop the service and start/run privoxy directly in the terminal -> `/usr/sbin/privoxy --no-daemon --pidfile /run/privoxy.pid --user privoxy /etc/privoxy/config`
 - privoxy also has a kind-of-web-ui but I didn't end up using it. but it's nice to see it to confirm that the proxy is working. go to `http://p.p` to see that web ui. you do have to run `chromium-browser --proxy-server="127.0.0.1:8118"` i.e. use the proxy, of course
 - all privoxy default.action and .filter and match-all.action have been disabled i.e. only user.action and .filter have been kept as enabled
+- extremely small note but if you do try to uninstall privoxy using apt-get and delete /etc/privoxy by hand, you might run into some trouble. the solution is to call `sudo dpkg --purge privoxy && sudo apt-get install privoxy`
