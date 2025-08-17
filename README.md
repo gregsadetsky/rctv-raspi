@@ -1,3 +1,9 @@
+# NOTE NOTE NOTE
+
+the raspberry pi has been rebuilt with a new pi 5 w/ ssd, and it now runs a completely different rust-based Tauri program - whose code [is here](https://github.com/gregsadetsky/rctv-tauri)!!!
+
+---
+
 # rctv-raspi
 
 Hardware counterpart to RCTV software -- [repo here](https://github.com/gregsadetsky/rctv/).
